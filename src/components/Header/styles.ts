@@ -23,6 +23,7 @@ export const Navigation = styled.ul`
       line-height: 0;
       border-top: 2px solid transparent;
       border-bottom: 2px solid transparent;
+      padding: 0.25rem 0;
 
       &:hover {
         border-bottom-color: ${(props) => props.theme['blue-300']};
