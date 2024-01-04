@@ -3,13 +3,16 @@ import { GlobalStyle } from './global'
 import { defaultTheme } from './styles/themes/default'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './Router'
+import { AddressProvider } from './contexts/AddressContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <AddressProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </AddressProvider>
       <GlobalStyle />
     </ThemeProvider>
   )
