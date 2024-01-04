@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { MapTrifold, Warning } from '@phosphor-icons/react'
 import { ResultIconBox, ResultContent, ResultWrapper } from './styles'
+import { AddressContext } from '../../contexts/AddressContext'
 
 export function SearchResult() {
-  const [isValidResult, setIsValidResult] = useState(false)
+  const { address, isDisabled, isValidResult } = useContext(AddressContext)
 
   return (
-    <ResultWrapper disabled={false}>
+    <ResultWrapper disabled={isDisabled}>
       {isValidResult && (
         <ResultIconBox>
           <MapTrifold size={44} />
@@ -21,22 +22,26 @@ export function SearchResult() {
         {isValidResult && (
           <>
             <header>
-              <h2>00000-000</h2>
+              <h2>{address.cep}</h2>
             </header>
 
             <div>
               <ul>
                 <li>
                   <strong>Logradouro: </strong>
+                  {address.logradouro}
                 </li>
                 <li>
                   <strong>Bairro: </strong>
+                  {address.bairro}
                 </li>
                 <li>
                   <strong>Município: </strong>
+                  {address.localidade}
                 </li>
                 <li>
                   <strong>UF: </strong>
+                  {address.uf}
                 </li>
               </ul>
             </div>
