@@ -1,16 +1,24 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const FormWrapper = styled.form`
   width: 100%;
   margin-top: -1.59375rem;
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   gap: 0.5rem;
 
   @media (max-width: 992px) {
     flex-direction: column;
   }
+`
+
+export const FieldsetWrapper = styled.fieldset`
+  display: flex;
+  width: 100%;
+  border: 0;
+  gap: 0.5rem;
 `
 
 export const BaseField = styled.input`
@@ -62,12 +70,28 @@ export const BaseButton = styled.button`
   }
 `
 
-export const SearchField = styled(BaseField)`
+interface SearchFieldProps {
+  invalid: boolean
+}
+
+export const SearchField = styled(BaseField)<SearchFieldProps>`
   flex: 1;
 
   border: 1px solid ${(props) => props.theme['gray-950']};
+
+  ${(props) =>
+    props.invalid === true &&
+    css`
+      &:focus {
+        box-shadow: 0 0 0 2px ${props.theme['red-300']};
+      }
+    `}
 `
 
 export const SearchButton = styled(BaseButton)`
   min-width: 9.1875rem;
+`
+
+export const ErrorMessage = styled.small`
+  color: ${(props) => props.theme['red-300']};
 `
