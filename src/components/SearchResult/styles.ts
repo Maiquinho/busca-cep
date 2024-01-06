@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 interface ResultWrapperProps {
-  disabled: boolean
+  $disabled: number
 }
 
 export const ResultWrapper = styled.section<ResultWrapperProps>`
@@ -18,11 +18,12 @@ export const ResultWrapper = styled.section<ResultWrapperProps>`
   border-radius: 6px;
 
   ${(props) =>
-    props.disabled === true &&
-    css`
-      opacity: 0.3;
-      cursor: not-allowed;
-    `}
+    props.$disabled
+      ? css`
+          opacity: 0.3;
+          cursor: not-allowed;
+        `
+      : ''}
 `
 
 const variantColors = {
@@ -59,19 +60,20 @@ export const ResultIconBox = styled.div<ResultIconBoxProps>`
 `
 
 interface ResultContentProps {
-  isValid: boolean
+  $valid: number
 }
 
 export const ResultContent = styled.div<ResultContentProps>`
   flex: 1;
 
   ${(props) =>
-    props.isValid === false &&
-    css`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    `}
+    props.$valid
+      ? css`
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        `
+      : ''}
 
   padding: 2.5rem;
 

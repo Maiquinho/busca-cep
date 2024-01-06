@@ -4,10 +4,11 @@ import { ResultIconBox, ResultContent, ResultWrapper } from './styles'
 import { AddressContext } from '../../contexts/AddressContext'
 
 export function SearchResult() {
-  const { address, isDisabled, isValidResult } = useContext(AddressContext)
+  const { activeAddress, isDisabled, isValidResult } =
+    useContext(AddressContext)
 
   return (
-    <ResultWrapper disabled={isDisabled}>
+    <ResultWrapper $disabled={+isDisabled}>
       {isValidResult && (
         <ResultIconBox>
           <MapTrifold size={44} />
@@ -18,30 +19,30 @@ export function SearchResult() {
           <Warning size={44} />
         </ResultIconBox>
       )}
-      <ResultContent isValid={isValidResult}>
+      <ResultContent $valid={+isValidResult}>
         {isValidResult && (
           <>
             <header>
-              <h2>{address.cep}</h2>
+              <h2>{activeAddress?.cep ?? '00000-000'}</h2>
             </header>
 
             <div>
               <ul>
                 <li>
                   <strong>Logradouro: </strong>
-                  {address.logradouro}
+                  {activeAddress?.logradouro}
                 </li>
                 <li>
                   <strong>Bairro: </strong>
-                  {address.bairro}
+                  {activeAddress?.bairro}
                 </li>
                 <li>
                   <strong>Município: </strong>
-                  {address.localidade}
+                  {activeAddress?.localidade}
                 </li>
                 <li>
                   <strong>UF: </strong>
-                  {address.uf}
+                  {activeAddress?.uf}
                 </li>
               </ul>
             </div>
