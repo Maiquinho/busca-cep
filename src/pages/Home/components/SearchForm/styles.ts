@@ -8,10 +8,6 @@ export const FormWrapper = styled.form`
   flex-direction: column;
   align-items: start;
   gap: 0.5rem;
-
-  @media (max-width: 992px) {
-    flex-direction: column;
-  }
 `
 
 export const FieldsetWrapper = styled.fieldset`
@@ -19,6 +15,10 @@ export const FieldsetWrapper = styled.fieldset`
   width: 100%;
   border: 0;
   gap: 0.5rem;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
 `
 
 export const BaseField = styled.input`

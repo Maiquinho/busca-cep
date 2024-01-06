@@ -3,15 +3,23 @@ import styled from 'styled-components'
 export const HeaderWrapper = styled.header`
   background: ${(props) => props.theme['gray-900']};
 
-  padding: 7.25rem 0;
+  padding: 4rem 0;
 
-  min-height: 16.875rem;
+  @media (min-width: 1024px) {
+    min-height: 16.875rem;
+    padding: 7.25rem 0;
+  }
 `
 
 export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 `
 
 export const Navigation = styled.ul`

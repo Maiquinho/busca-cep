@@ -57,6 +57,10 @@ export const ResultIconBox = styled.div<ResultIconBoxProps>`
             fill: ${(props) => props.theme['gray-100']};
           }
         `}
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 `
 
 interface ResultContentProps {

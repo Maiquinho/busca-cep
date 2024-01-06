@@ -12,6 +12,13 @@ export const HistoryTitle = styled.section`
   }
 `
 
+export const TableWrapper = styled.div`
+  @media (max-width: 992px) {
+    width: 100%;
+    overflow: scroll;
+  }
+`
+
 export const HistoryTable = styled.table`
   width: 100%;
   border-collapse: collapse;
