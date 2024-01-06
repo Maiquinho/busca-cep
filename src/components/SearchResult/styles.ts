@@ -42,7 +42,7 @@ export const ResultIconBox = styled.div<ResultIconBoxProps>`
   justify-content: center;
 
   ${(props) =>
-    props.variant
+    props.variant === 'warning'
       ? css`
           background: ${props.theme[variantColors[props.variant]]};
 
@@ -72,12 +72,12 @@ export const ResultContent = styled.div<ResultContentProps>`
 
   ${(props) =>
     props.$valid
-      ? css`
+      ? ''
+      : css`
           display: flex;
           flex-direction: column;
           justify-content: center;
-        `
-      : ''}
+        `}
 
   padding: 2.5rem;
 
