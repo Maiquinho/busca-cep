@@ -37,6 +37,9 @@ export function SearchForm() {
     },
   })
 
+  const zipCodeErrorMessage = errors.zipCode?.message
+  const zipCodeErrorMessageToBoolean = !!zipCodeErrorMessage
+
   const zipCode = watch('zipCode')
 
   function handleSearchForm() {
@@ -53,15 +56,15 @@ export function SearchForm() {
           placeholder="Digite o CEP que deseja buscar"
           {...register('zipCode', { required: true })}
           maxLength={9}
-          invalid={!!errors.zipCode?.message}
+          $invalid={+zipCodeErrorMessageToBoolean}
         />
         <SearchButton>
           <MagnifyingGlass size={20} />
           Buscar
         </SearchButton>
       </FieldsetWrapper>
-      {errors.zipCode?.message && (
-        <ErrorMessage>{errors.zipCode?.message}</ErrorMessage>
+      {zipCodeErrorMessage && (
+        <ErrorMessage>{zipCodeErrorMessage}</ErrorMessage>
       )}
     </FormWrapper>
   )

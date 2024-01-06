@@ -71,7 +71,7 @@ export const BaseButton = styled.button`
 `
 
 interface SearchFieldProps {
-  invalid: boolean
+  $invalid: number
 }
 
 export const SearchField = styled(BaseField)<SearchFieldProps>`
@@ -80,12 +80,13 @@ export const SearchField = styled(BaseField)<SearchFieldProps>`
   border: 1px solid ${(props) => props.theme['gray-950']};
 
   ${(props) =>
-    props.invalid === true &&
-    css`
-      &:focus {
-        box-shadow: 0 0 0 2px ${props.theme['red-300']};
-      }
-    `}
+    props.$invalid
+      ? css`
+          &:focus {
+            box-shadow: 0 0 0 2px ${props.theme['red-300']};
+          }
+        `
+      : ''}
 `
 
 export const SearchButton = styled(BaseButton)`
